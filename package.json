@@ -1,0 +1,41 @@
+{
+  "name": "royal-node-api",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "author": "edelta enterprise solutions",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.7",
+    "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.9"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.2",
+    "mongoose-unique-validator": "^2.0.3",
+    "plivo": "^4.20.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "heroku-postbuild": "npm run build",
+    "start": "babel-node src/app.js",
+    "dev:start": "clear; nodemon --exec babel-node src/app.js",
+    "inspect": "nodemon --inspect src/app.ts",
+    "test-1": "NODE_ENV=test yarn run migrate:up && jest --watchAll",
+    "lint": "npm run lint:js ",
+    "lint:eslint": "eslint --ignore-path .gitignore --ext .ts",
+    "lint:js": "npm run lint:eslint src/",
+    "lint:fix": "npm run lint:js -- --fix",
+    "migrate:up": "ts-node migrate.ts up",
+    "migrate:down": "ts-node migrate.ts down",
+    "pretest": "NODE_ENV=test yarn run migrate:up",
+    "test": "jest --watchAll --runInBand --detectOpenHandles --coverage",
+    "posttest": "NODE_ENV=test yarn run migrate:down"
+  }
+}
