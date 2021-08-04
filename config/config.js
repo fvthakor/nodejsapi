@@ -4,11 +4,11 @@ const envFound = dotenv.config({ path: path.join(__dirname, `../.env`) });
     const config = {
         'MODE': 'Development',
         'PORT': process.env.PORT || 5000,
-        'MONGO_URL': process.env.MONGO_URL,
+        'MONGO_URL': process.env.MONGO_URL || 'mongodb://localhost:27017/gms',
         'UPLOAD_PATH': path.resolve( `${__dirname }/../uploads` ),
-        'JWT_SECRET': process.env.JWT_SECRET, 
-        'PLIVO_AUTH_ID': process.env.PLIVO_AUTH_ID,
-        'PLIVO_AUTH_TOKEN': process.env.PLIVO_AUTH_TOKEN
+        'JWT_SECRET': process.env.JWT_SECRET || '123456', 
+        'PLIVO_AUTH_ID': process.env.PLIVO_AUTH_ID || '',
+        'PLIVO_AUTH_TOKEN': process.env.PLIVO_AUTH_TOKEN || ''
     };
 
     // Modify for Production

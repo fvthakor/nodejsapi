@@ -32,16 +32,9 @@ class User{
                 },
                 role:{
                     type: String,
-                    enum:['admin','employee'],
-                    default:'employee'
+                    enum:['admin','user'],
+                    default:'user'
                 },
-                leader:{
-                    type: Schema.Types.ObjectId,
-                    ref:'users',
-                },
-                assigned_number:{
-                    type:String,
-                }
             },{
                 timestamps: true,
             }

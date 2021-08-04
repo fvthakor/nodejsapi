@@ -24,7 +24,8 @@ class UserController extends Controller {
     return res.status(201).send(response);
   }
   async addAdmin(req,res){
-    delete req.body.role;
+    //delete req.body.role;
+    console.log(req.body);
     const hash=await bcrypt.hash(req.body.password,12)
     let response = await this.service.addAdmin({...req.body,password:hash});
     if (response.error) return res.status(response.statusCode).send(response);

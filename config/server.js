@@ -5,8 +5,9 @@ import verifyJwt from '../src/helpers/jwtVerify'
 const server= express()
 
 const disableJwt=['/api/login','/api/register','/api/register/admin']
-
+server.use(bodyParser.urlencoded())
 server.use(bodyParser.json())
+//server.use(bodyParser.urlencoded()
 server.use(verifyJwt(disableJwt))
 
 setRoutes(server)
